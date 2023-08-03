@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversión de Puntos</title>
+    <style>
+        body {
+            background-color: #ffe6ea;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #ff66a3;
+        }
+
+        #points {
+            font-size: 24px;
+            color: #ff66a3;
+        }
+
+        #valueInPesos {
+            font-size: 32px;
+            color: #27ae60;
+        }
+
+        #currentDollarValue {
+            font-size: 20px;
+        }
+
+        #updateButton {
+            background-color: #ff66a3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #updateButton:hover {
+            background-color: #ff3377;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Conversión de Puntos</h1>
+    <p id="points">340 puntos</p>
+    <p id="valueInPesos">COP 3,340.99</p>
+    <p id="currentDollarValue">Valor del dólar actual: $1.00 = COP 3,500.00</p>
+    <button id="updateButton">Actualizar</button>
+
+    <script src="../popupPuntos.js"></script>
+</body>
+
+</html>

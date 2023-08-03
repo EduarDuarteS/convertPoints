@@ -1,0 +1,22 @@
+{
+    "name": "Convertir Puntos",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_title": "Default Title",
+      "default_popup": "HTMLs/popup.html",
+      "default_icon": {
+      }
+    },
+    "icons": {
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["contentScript.js", "popup.js"]
+        }
+      ]
+  }

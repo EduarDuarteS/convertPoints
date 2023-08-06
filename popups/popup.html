@@ -1,29 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Inicio de sesión</title>
-</head>
-<body>
-  <h2>Inicio de sesión</h2>
-  <div id="welcome-section" style="display: none;">
-    <!-- Contenido de bienvenida -->
-    <h3>Bienvenido!</h3>
-  </div>
-  <form id="login-form">
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required><br>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inicio de sesión</title>
+    <style>
+      body {
+        background-color: #f8f8f8;
+        width: 350px;
+      }
+      h2 {
+        color: #ff69b4;
+        text-align: center;
+      }
+      form {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #ccc;
+        margin: auto;
+        max-width: 400px;
+        padding: 20px;
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="email"],
+      input[type="password"] {
+        border-radius: 5px;
+        border: none;
+        box-shadow: inset 0px 0px 5px #ccc;
+        display: block;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-right: 10px; 
+        padding: 10px;
+        width: 95%;
+      }
+      input[type="submit"] {
+        background-color: #ff69b4;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        font-size: 16px;
+        margin-top: 20px;
+        padding: 10px;
+        width: 100%;
+      }
+      input[type="submit"]:hover {
+        background-color: #ff1493;
+        transition-duration: 0.5s;
+        transform: scale(1.1);
+        color: #fff;
+        cursor: pointer;
+      }
+      .error-message {
+        color: #ff0000;
+        display: none;
+        font-size: 12px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Inicio de sesión</h2>
+    <div id="welcome-section" style="display: none">
+      <!-- Contenido de bienvenida -->
+      <h3>Bienvenido!</h3>
+    </div>
+    <form id="login-form">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required /><br />
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required><br>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required /><br />
 
-    <button type="submit">Iniciar sesión</button>
-  </form>
+      <button type="submit">Iniciar sesión</button>
 
+      <div class="error-message" id="error-email">
+        Debe ingresar un correo electrónico valido
+      </div>
+      <div class="error-message" id="error-password">
+        Usuario o contraseña no validos
+      </div>
+    </form>
 
-  <!-- Include CryptoJS library -->
-  <script src="../lib/crypto-js.js"></script>
-  <script src="../lib/amazon-cognito-identity.js"></script>
-  <script src="../popup.js"></script>
-</body>
+    <script src="../lib/crypto-js.js"></script>
+    <script src="../lib/amazon-cognito-identity.js"></script>
+    <script src="../popup.js"></script>
+
+    <script>
+      const form = document.getElementById("login-form");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const errorEmail = document.getElementById("error-email");
+      const errorPassword = document.getElementById("error-password");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!email.checkValidity()) {
+          errorEmail.textContent =
+            "Por favor ingrese un correo electrónico válido.";
+        } else {
+          errorEmail.textContent = "";
+        }
+
+        if (!password.checkValidity()) {
+          errorPassword.textContent =
+            "Por favor ingrese una contraseña válida.";
+        } else {
+          errorPassword.textContent = "";
+        }
+
+        if (email.checkValidity() && password.checkValidity()) {
+          alert("Inicio de sesión exitoso!");
+        }
+      });
+    </script>
+  </body>
 </html>

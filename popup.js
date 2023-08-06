@@ -56,6 +56,7 @@ document.getElementById("login-form").addEventListener("submit", (event) => {
       handleLoggedInState();
     },
     onFailure: (err) => {
+      document.getElementById("error-password").style.display="block";
       console.error("Error en el inicio de sesión", err);
       // Aquí puedes mostrar un mensaje de error al usuario
     },
@@ -70,7 +71,7 @@ async function handleLoggedInState() {
     const decryptedAccessToken = CryptoJS.AES.decrypt(
       encryptedAccessToken,
       "encryption-key"
-    ).toString(CryptoJS.enc.Utf8);
+      ).toString(CryptoJS.enc.Utf8);
     if (!decryptedAccessToken) {
       console.error("Error al desencriptar el token de acceso");
       // Aquí puedes mostrar un mensaje de error al usuario
@@ -90,6 +91,7 @@ async function handleLoggedInState() {
     document.getElementById("welcome-section").style.display = "none";
     document.getElementById("login-form").style.display = "block";
     document.getElementById("add-account-section").style.display = "none";
+    console.log("info: fallo login");
   }
 }
 
